@@ -1,0 +1,570 @@
+import React, { useState, useEffect } from 'react';
+import { ShoppingCart, Menu, X, Coffee, Droplets, Star, ChevronDown, ChevronUp, MapPin, Clock, Facebook, Instagram, MessageCircle, Heart, Smile, Sparkles } from 'lucide-react';
+
+const BloomCoffeeMilk = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+  const [showToast, setShowToast] = useState(false);
+
+  // Handle Scroll for Navbar styling
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const addToCart = () => {
+    setCartCount(prev => prev + 1);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+  };
+
+  const scrollToSection = (id) => {
+    setIsMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="font-sans text-[#5D4037] bg-[#FFF8F5] selection:bg-[#FFB7B2] selection:text-white overflow-x-hidden">
+      
+      {/* Toast Notification */}
+      <div className={`fixed top-24 right-5 z-50 bg-[#8D6E63] text-white px-6 py-3 rounded-2xl shadow-lg transition-opacity duration-300 flex items-center gap-2 ${showToast ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <Smile size={20} /> 已偷偷放入購物車囉！
+      </div>
+
+      {/* Navigation */}
+      <nav className={`fixed w-full z-40 transition-all duration-300 ${scrolled ? 'bg-[#FFF8F5]/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6 text-white'}`}>
+        <div className="container mx-auto px-6 flex justify-between items-center">
+          <div className={`text-2xl font-bold tracking-widest cursor-pointer flex flex-col items-center ${scrolled ? 'text-[#5D4037]' : 'text-white'}`} onClick={() => window.scrollTo(0,0)}>
+            <span className="font-serif italic text-3xl">Bloom.</span>
+            <span className="text-xs tracking-[0.2em] font-medium">大人牛乳</span>
+          </div>
+          
+          {/* Desktop Menu */}
+          <div className={`hidden md:flex space-x-8 items-center font-medium ${scrolled ? 'text-[#8D6E63]' : 'text-white'}`}>
+            <button onClick={() => scrollToSection('about')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">初心故事</button>
+            <button onClick={() => scrollToSection('ingredients')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">四大堅持</button>
+            <button onClick={() => scrollToSection('new-arrival')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">新品登場</button>
+            <button onClick={() => scrollToSection('shop')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">把美味帶回家</button>
+            <div className="relative cursor-pointer hover:scale-110 transition text-[#FF8C94]">
+              <div className={`p-2 rounded-full ${scrolled ? 'bg-[#FFEDE6]' : 'bg-white/20'}`}>
+                <ShoppingCart size={20} className={scrolled ? 'text-[#5D4037]' : 'text-white'} />
+              </div>
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-[#FF8C94] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center border-2 border-white">
+                  {cartCount}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className={`md:hidden ${scrolled ? 'text-[#5D4037]' : 'text-white'}`}>
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-[#FFF8F5] text-[#5D4037] shadow-xl py-6 px-6 flex flex-col space-y-4 rounded-b-3xl border-t border-[#FFEDE6]">
+            <button onClick={() => scrollToSection('about')} className="text-left text-lg py-3 border-b border-dashed border-[#FFB7B2]">初心故事</button>
+            <button onClick={() => scrollToSection('ingredients')} className="text-left text-lg py-3 border-b border-dashed border-[#FFB7B2]">四大堅持</button>
+            <button onClick={() => scrollToSection('new-arrival')} className="text-left text-lg py-3 border-b border-dashed border-[#FFB7B2]">新品登場</button>
+            <button onClick={() => scrollToSection('shop')} className="text-left text-lg py-3 font-bold text-[#FF8C94]">把美味帶回家</button>
+          </div>
+        )}
+      </nav>
+
+      {/* 1. Hero Section */}
+      <header className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image with Warm Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1461023058943-48db09b9acb9?q=80&w=2574&auto=format&fit=crop" 
+            alt="Warm coffee vibe" 
+            className="w-full h-full object-cover"
+          />
+          {/* Pinkish/Warm overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#5D4037]/40 via-[#8D6E63]/20 to-[#FFEDE6]/60 mix-blend-multiply"></div>
+        </div>
+
+        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto fade-in-up">
+          <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-6 border border-white/30">
+            <span className="tracking-widest text-sm font-medium">✨ 宜蘭礁溪．隱藏版必喝</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-sm tracking-wide">
+            一秒飛日本！<br/>
+            重現北海道那口 <span className="font-serif italic text-[#FFDAC1]">純粹感動</span>
+          </h1>
+          <p className="text-lg md:text-xl mb-10 font-light tracking-wider opacity-95 text-[#FFF5F2]">
+            不用請假飛出國，<br/>這瓶「神級」咖啡牛乳，直接宅配到你手心！
+          </p>
+          <button 
+            onClick={() => scrollToSection('shop')}
+            className="bg-[#FFB7B2] text-[#5D4037] px-10 py-4 rounded-full text-lg font-bold hover:bg-[#FFDAC1] transition transform hover:scale-105 shadow-[0_4px_14px_0_rgba(255,183,178,0.39)] flex items-center gap-2 mx-auto"
+          >
+            <Sparkles size={20} /> 我想喝喝看
+          </button>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white opacity-80">
+          <ChevronDown size={32} />
+        </div>
+      </header>
+
+      {/* 2. Pain Points & Resonance */}
+      <section className="py-24 px-6 bg-[#FFF8F5] text-center relative overflow-hidden">
+        {/* Decorative blobs */}
+        <div className="absolute top-10 left-10 w-32 h-32 bg-[#FFEDE6] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 bg-[#FFDAC1] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+
+        <div className="max-w-3xl mx-auto relative z-10">
+          <h2 className="text-2xl md:text-4xl font-bold text-[#5D4037] mb-8 leading-normal">
+            「長大才懂，<br/>
+            <span className="inline-block relative">
+              簡單純粹，其實最難。
+              <svg className="absolute w-full h-3 -bottom-1 text-[#FFB7B2] opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
+                 <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
+              </svg>
+            </span>」
+          </h2>
+          <div className="bg-white/60 backdrop-blur-sm p-8 rounded-[2rem] shadow-sm border border-[#FFEDE6]">
+            <div className="space-y-6 text-lg text-[#8D6E63] leading-relaxed">
+              <p>
+                市售咖啡乳總有一堆看不懂的化學算式...<br/>
+                你想找的，是不是那個喝完會不自覺<span className="text-[#FF8C94] font-bold">「嘴角失守」</span>的味道？
+              </p>
+              <div className="flex justify-center my-4">
+                 <div className="w-16 h-1 bg-[#FFB7B2] rounded-full"></div>
+              </div>
+              <p className="font-bold text-xl text-[#5D4037]">
+                不用找了，就是這瓶！
+              </p>
+              <p>
+                這不是化學調味乳，這是獻給大人的天然香醇。<br/>
+                耗時一年研發，我們把那次在北海道喝到的幸福感，通通裝進來了。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Core Advantages (Ingredients) */}
+      <section id="ingredients" className="py-20 px-6 bg-white relative">
+        <div className="absolute top-0 left-0 w-full h-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDEyMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHBhdGggZD0iTTAgMGw2MDAgOTAgNjAwLTkwdjEyMEgwVjB6IiBmaWxsPSIjRkZGOEY1Ii8+PC9zdmc+')] rotate-180"></div>
+        
+        <div className="max-w-6xl mx-auto mt-10">
+          <div className="text-center mb-16">
+            <div className="inline-block bg-[#FFEDE6] text-[#FF8C94] px-4 py-1 rounded-full text-sm font-bold tracking-wider mb-3">
+              NATURAL INGREDIENTS
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#5D4037] mb-4">100% 純天然的偏執</h2>
+            <p className="text-[#8D6E63]">我們把世界最好的，都裝進這個可愛的瓶子裡啦！</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Card 1 */}
+            <div className="group bg-[#FFF8F5] p-6 rounded-[2rem] hover:shadow-[0_10px_40px_-10px_rgba(255,183,178,0.5)] transition duration-300 border border-transparent hover:border-[#FFB7B2]">
+              <div className="h-48 overflow-hidden rounded-3xl mb-6 shadow-inner relative mx-auto transform rotate-2 group-hover:rotate-0 transition duration-500">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1000&auto=format&fit=crop" alt="Roasted Coffee Beans" className="w-full h-full object-cover" />
+                <div className="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md text-[#8D6E63]">
+                  <Coffee size={20} />
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-[#5D4037]">靈魂｜冠軍的「神之手」</h3>
+              <p className="text-[#8D6E63] text-sm leading-relaxed">
+                嚴選精品豆，由 CR 最高分烘豆師 Gary 親自操刀。喝得到堅果巧克力香，尾韻回甘超迷人！
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="group bg-[#FFF8F5] p-6 rounded-[2rem] hover:shadow-[0_10px_40px_-10px_rgba(173,216,230,0.5)] transition duration-300 border border-transparent hover:border-blue-200 mt-0 md:mt-8 lg:mt-0">
+              <div className="h-48 overflow-hidden rounded-3xl mb-6 shadow-inner relative mx-auto transform -rotate-2 group-hover:rotate-0 transition duration-500">
+                <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=1000&auto=format&fit=crop" alt="Fresh Milk" className="w-full h-full object-cover" />
+                <div className="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md text-blue-400">
+                  <Droplets size={20} />
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-[#5D4037]">身體｜鮮乳界的愛馬仕</h3>
+              <p className="text-[#8D6E63] text-sm leading-relaxed">
+                來自花蓮吉蒸牧場的單一乳源，濃郁又絲滑，跟我們的咖啡根本是天生一對！
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="group bg-[#FFF8F5] p-6 rounded-[2rem] hover:shadow-[0_10px_40px_-10px_rgba(255,192,203,0.5)] transition duration-300 border border-transparent hover:border-pink-200">
+              <div className="h-48 overflow-hidden rounded-3xl mb-6 shadow-inner relative mx-auto transform rotate-2 group-hover:rotate-0 transition duration-500">
+                <img src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?q=80&w=1000&auto=format&fit=crop" alt="Fine Sugar" className="w-full h-full object-cover" />
+                <div className="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md text-pink-400">
+                  <Heart size={20} />
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-[#5D4037]">點綴｜雪一般的溫柔</h3>
+              <p className="text-[#8D6E63] text-sm leading-relaxed">
+                死甜走開！北海道特級上白糖，清爽不膩，就像溫柔的配角，絕不搶了咖啡的主戲。
+              </p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="group bg-[#FFF8F5] p-6 rounded-[2rem] hover:shadow-[0_10px_40px_-10px_rgba(176,224,230,0.5)] transition duration-300 border border-transparent hover:border-cyan-200 mt-0 md:mt-8 lg:mt-0">
+              <div className="h-48 overflow-hidden rounded-3xl mb-6 shadow-inner relative mx-auto transform -rotate-2 group-hover:rotate-0 transition duration-500">
+                <img src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?q=80&w=1000&auto=format&fit=crop" alt="Pure Mountain Water" className="w-full h-full object-cover" />
+                <div className="absolute top-3 left-3 bg-white p-2 rounded-full shadow-md text-cyan-500">
+                  <Droplets size={20} />
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-[#5D4037]">基底｜雪山泉水加持</h3>
+              <p className="text-[#8D6E63] text-sm leading-relaxed">
+                好水才泡得出好咖啡嘛！宜蘭限定的雪山山脈泉水，純淨甘甜，每一口都是大自然的禮物。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-12 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDEyMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHBhdGggZD0iTTAgMGw2MDAgOTAgNjAwLTkwdjEyMEgwVjB6IiBmaWxsPSIjRkZFOEU2Ii8+PC9zdmc+')]"></div>
+      </section>
+
+      {/* 4. Testimonials */}
+      <section className="py-24 bg-[#FFEDE6]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="text-[#FF8C94] font-bold tracking-widest uppercase text-sm bg-white px-4 py-1 rounded-full shadow-sm">Testimonials</span>
+            <h2 className="text-3xl font-bold mt-4 text-[#5D4037]">來自溫泉鄉的「秘密暗號」</h2>
+            <p className="text-[#8D6E63] mt-2">住過礁溪五星飯店，都知道這瓶有多厲害</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Review 1 */}
+            <div className="bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_0_rgba(255,183,178,0.2)] relative border border-[#FFF5F2]">
+              <div className="absolute -top-4 -left-4 bg-[#FFB7B2] text-white p-3 rounded-full shadow-md">
+                 <span className="text-2xl font-serif">“</span>
+              </div>
+              <div className="flex text-[#FFB7B2] mb-4"><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/></div>
+              <p className="text-[#5D4037] mb-6 leading-relaxed">「喝過大人牛乳，真的回不去超商了啦！那種濃郁又不膩的口感，真的是宜蘭之光！最近新出的達克瓦茲更是驚艷，配無糖咖啡根本絕配，辦公室團購王就是它！」</p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-[#FFEDE6] rounded-full flex items-center justify-center font-bold text-[#FF8C94]">B</div>
+                <div className="ml-3">
+                  <p className="font-bold text-sm text-[#5D4037]">知名宜蘭部落客</p>
+                  <p className="text-xs text-[#8D6E63]">真心推薦</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Review 2 */}
+            <div className="bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_0_rgba(255,183,178,0.2)] relative border border-[#FFF5F2]">
+              <div className="absolute -top-4 -right-4 bg-[#FFDAC1] text-white p-3 rounded-full shadow-md transform rotate-12">
+                 <span className="text-2xl font-serif">”</span>
+              </div>
+              <div className="flex text-[#FFB7B2] mb-4"><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/></div>
+              <p className="text-[#5D4037] mb-6 leading-relaxed">「每次去礁溪住老爺或寒沐，回程後車廂一定要塞一手大人牛乳。現在能宅配真的太方便了，完全是我們辦公室下午茶的救星！」</p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-[#FFEDE6] rounded-full flex items-center justify-center font-bold text-[#FF8C94]">G</div>
+                <div className="ml-3">
+                  <p className="font-bold text-sm text-[#5D4037]">台北五星飯店常客</p>
+                  <p className="text-xs text-[#8D6E63]">忠實粉絲</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. New Product: Dacquoise */}
+      <section id="new-arrival" className="py-24 bg-[#FFF8F5] relative">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2 relative">
+               <div className="absolute -top-6 -left-6 w-24 h-24 bg-[#FFDAC1] rounded-full opacity-50 z-0"></div>
+               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#FFB7B2] rounded-full opacity-50 z-0"></div>
+               {/* New Product Image */}
+               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition duration-500 border-4 border-white z-10">
+                  <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?q=80&w=1000&auto=format&fit=crop" alt="Coffee Dacquoise" className="w-full h-auto object-cover" />
+                  <div className="absolute bottom-6 left-6 bg-white/95 px-6 py-2 rounded-full shadow-md text-[#5D4037]">
+                    <span className="font-bold tracking-widest flex items-center gap-2"><Sparkles size={16} className="text-[#FF8C94]"/> 2026 NEW</span>
+                  </div>
+               </div>
+            </div>
+            
+            <div className="lg:w-1/2 space-y-6">
+              <h2 className="text-sm font-bold tracking-[0.2em] text-[#FF8C94] bg-[#FFEDE6] inline-block px-3 py-1 rounded-lg">真大人的知己</h2>
+              <h3 className="text-4xl md:text-5xl font-bold text-[#5D4037]">
+                咖啡牛乳達克瓦茲<br/>
+                <span className="text-2xl md:text-3xl font-medium mt-3 block text-[#8D6E63] font-serif italic">幸福，原來可以這麼輕盈</span>
+              </h3>
+              <p className="text-[#8D6E63] leading-relaxed text-lg">
+                懂喝咖啡的你，一定懂這款甜點的溫柔。這是我們專為搭配無糖「真大人」系列所設計的靈魂伴侶。
+              </p>
+              <div className="bg-white p-6 rounded-3xl border-2 border-[#FFEDE6] shadow-sm relative">
+                 <div className="absolute -top-3 -left-2 text-4xl text-[#FFB7B2]">❝</div>
+                <p className="italic text-[#5D4037] relative z-10">
+                  「為了這口『入口即化』，我們不惜成本選用烘焙界的貴族食材。淡淡的咖啡牛乳香氣在口中化開，不搶戲、不過甜，只有純粹的幸福感。」
+                </p>
+              </div>
+              <ul className="space-y-3">
+                 <li className="flex items-center text-[#5D4037]"><span className="w-6 h-6 bg-[#FFB7B2] text-white rounded-full mr-3 flex items-center justify-center text-xs">✓</span>藍鑽杏仁粉 x 阿根廷奶油</li>
+                 <li className="flex items-center text-[#5D4037]"><span className="w-6 h-6 bg-[#FFB7B2] text-white rounded-full mr-3 flex items-center justify-center text-xs">✓</span>沒有可怕的甜膩奶腥味</li>
+                 <li className="flex items-center text-[#5D4037]"><span className="w-6 h-6 bg-[#FFB7B2] text-white rounded-full mr-3 flex items-center justify-center text-xs">✓</span>頂級食材的優雅餘韻</li>
+              </ul>
+              <button onClick={() => scrollToSection('shop')} className="mt-4 bg-[#5D4037] text-white px-8 py-3 rounded-2xl hover:bg-[#8D6E63] transition shadow-lg hover:shadow-xl">
+                嚐嚐輕盈的幸福
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Brand Story */}
+      <section id="about" className="py-24 bg-[#5D4037] text-[#FFEDE6] relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#8D6E63] rounded-full opacity-20 -mr-32 -mt-32"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#8D6E63] rounded-full opacity-20 -ml-32 -mb-32"></div>
+
+        <div className="container mx-auto px-6 max-w-5xl relative z-10">
+          <div className="flex flex-col md:flex-row gap-16 items-center">
+            <div className="md:w-1/2 space-y-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">老闆的任性</h2>
+              <div className="w-16 h-2 bg-[#FFB7B2] rounded-full"></div>
+              <p className="leading-relaxed text-lg text-[#FFDAC1]">
+                一切都是從北海道那瓶牛奶開始的。
+              </p>
+              <p className="opacity-90 leading-relaxed">
+                故事的開始，是老闆在日本北海道旅行時的一次偶遇。那瓶在地牛乳的風味，純粹得令人震撼——沒有香精的假味，只有食材本身的厚度。
+              </p>
+              <p className="opacity-90 leading-relaxed">
+                回到台灣後，老闆一直忘不了那個味道，嘴巴變刁了，找不到好喝的。「既然買不到，那乾脆自己做吧！」就憑著這股任性的傻勁，耗了一整年，試喝到手抖心悸，才終於調出這完美比例。
+              </p>
+              <div className="bg-[#FFF8F5]/10 p-6 rounded-3xl backdrop-blur-sm border border-white/10 my-6">
+                <blockquote className="text-xl italic text-white text-center">
+                  「如果要做，就要做自己也敢天天喝的！」
+                </blockquote>
+              </div>
+              <p className="text-[#FFB7B2] font-medium flex items-center gap-2">
+                <Heart size={18} fill="currentColor"/> 這就是「大人牛乳」的誕生故事。
+              </p>
+            </div>
+            <div className="md:w-1/2 relative">
+               <div className="absolute inset-0 border-2 border-[#FFDAC1] rounded-[2rem] transform translate-x-4 translate-y-4"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1000&auto=format&fit=crop" 
+                alt="Coffee Artisan" 
+                className="rounded-[2rem] shadow-2xl relative z-10"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Product Shop Section */}
+      <section id="shop" className="py-24 px-6 bg-white relative">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#5D4037]">隨時隨地，享受奢華</h2>
+            <p className="text-[#8D6E63] mt-4">看看今天想帶誰回家？</p>
+            <div className="w-24 h-1 bg-[#FFB7B2] mx-auto mt-6 rounded-full"></div>
+          </div>
+
+          {/* Individual Products */}
+          <div className="mb-20">
+            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-[#5D4037]">
+              <span className="w-8 h-8 bg-[#FFEDE6] rounded-full flex items-center justify-center text-[#FF8C94] text-sm">01</span>
+              單品選購
+            </h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Product 1 */}
+              <div className="bg-white border-2 border-[#FFEDE6] rounded-[2rem] overflow-hidden hover:shadow-xl transition duration-300 hover:border-[#FFB7B2] group">
+                <div className="bg-[#FFF8F5] h-60 flex items-center justify-center p-4 relative overflow-hidden">
+                  <div className="absolute w-40 h-40 bg-[#FFDAC1] rounded-full opacity-50 blur-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                  <img src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?q=80&w=600&auto=format&fit=crop" className="h-full object-contain mix-blend-multiply relative z-10 group-hover:scale-105 transition duration-500" alt="Bottle 300ml"/>
+                </div>
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-lg font-bold text-[#5D4037]">經典大人牛乳 <span className="text-sm font-normal text-[#8D6E63] block mt-1">輕巧獨享瓶 (300ml)</span></h4>
+                    <span className="text-xl font-bold text-[#FF8C94]">$120</span>
+                  </div>
+                  <p className="text-sm text-[#8D6E63] mb-4">早餐喚醒、午後提神，一手掌握剛剛好。</p>
+                  <button onClick={addToCart} className="w-full bg-[#5D4037] text-white py-3 rounded-xl hover:bg-[#8D6E63] transition flex justify-center items-center gap-2">
+                    + 加入購物車
+                  </button>
+                </div>
+              </div>
+
+              {/* Product 2 */}
+              <div className="bg-white border-2 border-[#FFEDE6] rounded-[2rem] overflow-hidden hover:shadow-xl transition duration-300 hover:border-[#FFB7B2] group">
+                <div className="bg-[#FFF8F5] h-60 flex items-center justify-center p-4 relative overflow-hidden">
+                   <div className="absolute w-40 h-40 bg-[#FFB7B2] rounded-full opacity-40 blur-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                  <img src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?q=80&w=600&auto=format&fit=crop" className="h-full object-contain mix-blend-multiply scale-110 relative z-10 group-hover:scale-115 transition duration-500" alt="Bottle 1000ml"/>
+                </div>
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-lg font-bold text-[#5D4037]">經典大人牛乳 <span className="text-sm font-normal text-[#8D6E63] block mt-1">豪邁分享瓶 (1000ml)</span></h4>
+                    <span className="text-xl font-bold text-[#FF8C94]">$360</span>
+                  </div>
+                  <p className="text-sm text-[#8D6E63] mb-4">家庭常備、辦公室分享，CP值最高。</p>
+                  <button onClick={addToCart} className="w-full bg-[#5D4037] text-white py-3 rounded-xl hover:bg-[#8D6E63] transition flex justify-center items-center gap-2">
+                    + 加入購物車
+                  </button>
+                </div>
+              </div>
+
+              {/* Product 3 */}
+              <div className="bg-white border-2 border-[#FFEDE6] rounded-[2rem] overflow-hidden hover:shadow-xl transition duration-300 hover:border-[#FFB7B2] group">
+                <div className="bg-[#FFF8F5] h-60 flex items-center justify-center p-4 relative">
+                   <img src="https://images.unsplash.com/photo-1601205741712-b261aff33a7d?q=80&w=600&auto=format&fit=crop" className="h-full object-cover rounded-2xl group-hover:scale-105 transition duration-500" alt="Dacquoise"/>
+                </div>
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="text-lg font-bold text-[#5D4037]">咖啡牛乳達克瓦茲 <span className="text-sm font-normal text-[#8D6E63] block mt-1">6入禮盒</span></h4>
+                    <span className="text-xl font-bold text-[#FF8C94]">$100</span>
+                  </div>
+                  <p className="text-sm text-[#8D6E63] mb-4">採用藍鑽杏仁粉與阿根廷奶油，極致細膩。</p>
+                  <button onClick={addToCart} className="w-full bg-[#5D4037] text-white py-3 rounded-xl hover:bg-[#8D6E63] transition flex justify-center items-center gap-2">
+                     + 加入購物車
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bundles */}
+          <div>
+            <div className="flex items-center mb-8">
+               <span className="bg-[#FF8C94] text-white text-xs px-3 py-1 rounded-full mr-3 font-bold shadow-sm">HOT</span>
+               <h3 className="text-2xl font-bold flex-grow text-[#5D4037]">官網限定．超值組合</h3>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              {/* Bundle 1 */}
+              <div className="bg-[#FFF8F5] p-6 rounded-[2rem] border border-[#FFEDE6] flex flex-col hover:border-[#FFB7B2] transition">
+                <div className="mb-4">
+                  <h4 className="text-lg font-bold text-[#5D4037] mb-1">【入門首選】經典嚐鮮組</h4>
+                  <p className="text-[#8D6E63] text-sm bg-white inline-block px-2 py-1 rounded-lg">300ml x 6入</p>
+                </div>
+                <div className="mt-auto flex justify-between items-center">
+                  <span className="text-2xl font-bold text-[#5D4037]">$720</span>
+                  <button onClick={addToCart} className="bg-[#FFB7B2] text-[#5D4037] px-6 py-2 rounded-full hover:bg-[#FFDAC1] transition text-sm font-bold">我要這組</button>
+                </div>
+              </div>
+
+              {/* Bundle 2 */}
+              <div className="bg-[#FFF8F5] p-6 rounded-[2rem] border border-[#FFEDE6] flex flex-col relative overflow-hidden hover:border-[#FFB7B2] transition">
+                <div className="absolute -right-8 top-4 bg-[#5D4037] text-white text-xs py-1 px-10 rotate-45">大推</div>
+                <div className="mb-4">
+                  <h4 className="text-lg font-bold text-[#5D4037] mb-1">【囤貨必備】極致享受組</h4>
+                  <p className="text-[#8D6E63] text-sm bg-white inline-block px-2 py-1 rounded-lg">1000ml x 2入 + 300ml x 2入</p>
+                </div>
+                <div className="mt-auto flex justify-between items-center">
+                  <span className="text-2xl font-bold text-[#5D4037]">$960</span>
+                  <button onClick={addToCart} className="bg-[#FFB7B2] text-[#5D4037] px-6 py-2 rounded-full hover:bg-[#FFDAC1] transition text-sm font-bold">我要這組</button>
+                </div>
+              </div>
+
+               {/* Bundle 3 */}
+               <div className="bg-[#FFEDE6] p-6 rounded-[2rem] border border-[#FFDAC1] flex flex-col ring-4 ring-[#FFF8F5] shadow-lg">
+                <div className="mb-4">
+                  <h4 className="text-lg font-bold text-[#5D4037] mb-1">【完美下午茶】真大人療癒組</h4>
+                  <p className="text-[#8D6E63] text-sm bg-white/50 inline-block px-2 py-1 rounded-lg">1000ml x 1入 + 達克瓦茲禮盒 x 1</p>
+                </div>
+                <div className="mt-auto flex justify-between items-center">
+                  <div>
+                    <span className="text-sm text-[#8D6E63] line-through mr-2">$500</span>
+                    <span className="text-2xl font-bold text-[#FF8C94]">$450</span>
+                  </div>
+                  <button onClick={addToCart} className="bg-[#FF8C94] text-white px-6 py-2 rounded-full hover:bg-[#FFB7B2] transition text-sm font-bold shadow-md">手刀搶購</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. FAQ */}
+      <section className="py-24 bg-[#FFF8F5]">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center mb-12">
+             <div className="w-16 h-16 bg-[#FFB7B2] rounded-full flex items-center justify-center text-white mx-auto mb-4">
+               <span className="text-3xl font-bold">?</span>
+             </div>
+             <h2 className="text-3xl font-bold text-[#5D4037]">大家都在問 FAQ</h2>
+          </div>
+          
+          <div className="space-y-4">
+            <FaqItem 
+              q="這瓶可以放多久呀？" 
+              a="因為我們沒有亂加防腐劑，透過 HPP 冷壓殺菌，未開封冷藏大概 20 天。達克瓦茲冷凍可以放 14 天，吃之前記得拿出來退冰一下喔！"
+            />
+            <FaqItem 
+              q="底部有黑黑的沉澱物是正常的嗎？" 
+              a="別擔心！那不是壞掉，是真材實料的天然咖啡粉啦！無添加化學懸浮劑才會沉澱，喝之前稍微搖一搖就好囉～"
+            />
+            <FaqItem 
+              q="怎麼送到我手上呢？" 
+              a="為了保持最新鮮的狀態，我們全程都用黑貓低溫冷鏈宅配，確保送到你手上還是冰冰涼涼的喔！"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Footer */}
+      <footer className="bg-[#5D4037] text-[#FFDAC1] py-16 rounded-t-[3rem]">
+        <div className="container mx-auto px-6 text-center">
+          <h3 className="text-2xl text-white font-medium mb-4">還沒空來礁溪度假？</h3>
+          <p className="mb-8 opacity-80">沒關係，先讓您的味蕾去旅行。</p>
+          <button onClick={() => scrollToSection('shop')} className="bg-[#FFEDE6] text-[#5D4037] px-8 py-3 rounded-full font-bold hover:bg-[#FFB7B2] hover:text-white transition mb-16 shadow-lg">
+            立即訂購，直送到府
+          </button>
+
+          <div className="border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-6 md:mb-0 text-left">
+              <h4 className="text-xl text-white font-serif tracking-widest mb-4">Bloom.<span className="text-xs ml-1 font-sans">大人牛乳</span></h4>
+              <div className="flex items-center mb-2 gap-2 text-sm opacity-80">
+                <MapPin size={16} /> 宜蘭縣礁溪鄉忠孝路15號
+              </div>
+              <div className="flex items-center gap-2 text-sm opacity-80">
+                <Clock size={16} /> 09:00 - 19:30
+              </div>
+            </div>
+
+            <div className="flex space-x-6">
+              <a href="#" className="hover:text-white transition transform hover:scale-110"><Facebook /></a>
+              <a href="#" className="hover:text-white transition transform hover:scale-110"><Instagram /></a>
+              <a href="#" className="hover:text-white transition transform hover:scale-110"><MessageCircle /></a>
+            </div>
+          </div>
+          <p className="text-xs text-[#8D6E63] mt-12">© 2026 Bloom Coffee Milk. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+// Sub-component for FAQ to handle open/close state
+const FaqItem = ({ q, a }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="bg-white rounded-3xl shadow-[0_2px_10px_0_rgba(0,0,0,0.05)] overflow-hidden border border-[#FFF5F2]">
+      <button 
+        className="w-full px-8 py-5 text-left flex justify-between items-center focus:outline-none hover:bg-[#FFF8F5] transition"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className="font-bold text-[#5D4037] text-lg">{q}</span>
+        {isOpen ? <ChevronUp size={24} className="text-[#FF8C94]" /> : <ChevronDown size={24} className="text-[#FFDAC1]" />}
+      </button>
+      <div 
+        className={`px-8 text-[#8D6E63] bg-[#FFF8F5] transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 py-5 opacity-100 border-t border-[#FFEDE6]' : 'max-h-0 py-0 opacity-0'}`}
+      >
+        {a}
+      </div>
+    </div>
+  );
+};
+
+export default BloomCoffeeMilk;
