@@ -239,7 +239,7 @@
                     <div className="container mx-auto px-6 flex justify-between items-center">
                     <div className={`text-2xl font-bold tracking-widest cursor-pointer flex flex-col items-center ${scrolled ? 'text-[#5D4037]' : 'text-white'}`} onClick={() => window.scrollTo(0,0)}>
                         <span className="font-serif italic text-3xl">大人牛乳</span>
-                        <span className="text-xs tracking-[0.2em] font-medium">Let it Bloom.</span>
+                        <span className="text-xs tracking-[0.2em] font-medium">Let it bloom.</span>
                     </div>
                     
                     {/* Desktop Menu */}
@@ -506,6 +506,76 @@
                         </button>
                         </div>
                     </div>
+                    </div>
+                </section>
+
+                {/* Comparison Section */}
+                <section className="py-24 px-6 bg-white relative">
+                    <div className="max-w-5xl mx-auto">
+                        <div className="text-center mb-16">
+                            <div className="inline-block bg-[#FFEDE6] text-[#FF8C94] px-4 py-1 rounded-full text-sm font-bold tracking-wider mb-3">
+                                PURE & SIMPLE
+                            </div>
+                            <h2 className="text-3xl md:text-4xl font-bold text-[#5D4037] mb-4">比一比，嚇一跳</h2>
+                            <p className="text-[#8D6E63]">不比不知道，一比才發現我們真的有夠「單純」</p>
+                        </div>
+
+                        <div className="flex flex-col md:flex-row gap-8 items-stretch justify-center relative">
+                            {/* VS Badge */}
+                            <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 w-20 h-20 bg-[#5D4037] rounded-full items-center justify-center border-4 border-white shadow-xl">
+                                <span className="text-2xl font-black text-[#FFDAC1] italic pr-1">VS</span>
+                            </div>
+
+                            {/* Others Card */}
+                            <div className="md:w-1/2 bg-[#F5F5F5] p-8 rounded-[2.5rem] relative overflow-hidden group hover:bg-[#EEEEEE] transition">
+                                <div className="absolute top-0 right-0 bg-[#BDBDBD] text-white text-xs font-bold px-4 py-2 rounded-bl-2xl">
+                                    他牌成分表
+                                </div>
+                                <div className="mt-4">
+                                    <h3 className="text-xl font-bold text-[#757575] mb-2 flex items-center gap-2">
+                                        一般市售咖啡乳 <span className="text-2xl">🧪</span>
+                                    </h3>
+                                    <div className="h-1 w-full bg-[#E0E0E0] mb-6 rounded-full"></div>
+                                    <p className="text-sm leading-7 text-[#616161] font-mono text-justify opacity-80">
+                                        奶精【葡萄糖漿、氫化棕櫚核仁油、乳清粉、乾酪素鈉、穩定劑（磷酸鉀、磷酸氫二鉀、多磷酸鈉）、乳化劑（脂肪酸甘油脂、乳酸硬脂酸鈉、二氧化矽、β-胡蘿蔔素】、脫脂奶粉、砂糖、即溶咖啡粉、北海道產全脂奶粉、二氧化矽、香料，麥芽糊精、精鹽、蔗糖素（甜味劑）。
+                                    </p>
+                                    <p className="mt-4 text-xs text-[#9E9E9E] text-center">
+                                        (看完是不是覺得頭有點暈...)
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Us Card */}
+                            <div className="md:w-1/2 bg-[#FFF8F5] p-8 rounded-[2.5rem] relative overflow-hidden border-4 border-[#FFB7B2] shadow-lg transform md:hover:-translate-y-2 transition duration-300">
+                                <div className="absolute top-0 right-0 bg-[#FF8C94] text-white text-xs font-bold px-4 py-2 rounded-bl-2xl">
+                                    大人牛乳成分表
+                                </div>
+                                <div className="mt-4 h-full flex flex-col">
+                                    <h3 className="text-xl font-bold text-[#5D4037] mb-2 flex items-center gap-2">
+                                        Bloom 大人牛乳 <span className="text-2xl">💖</span>
+                                    </h3>
+                                    <div className="h-1 w-full bg-[#FFB7B2] mb-6 rounded-full"></div>
+                                    
+                                    <div className="flex-grow flex flex-col justify-center items-center space-y-4 py-4">
+                                        <div className="bg-white px-6 py-3 rounded-2xl shadow-sm border border-[#FFEDE6] text-[#5D4037] font-bold text-xl w-full text-center">
+                                            鮮乳
+                                        </div>
+                                        <div className="text-[#FF8C94] font-bold text-xl">+</div>
+                                        <div className="bg-white px-6 py-3 rounded-2xl shadow-sm border border-[#FFEDE6] text-[#5D4037] font-bold text-xl w-full text-center">
+                                            原豆咖啡
+                                        </div>
+                                        <div className="text-[#FF8C94] font-bold text-xl">+</div>
+                                        <div className="bg-white px-6 py-3 rounded-2xl shadow-sm border border-[#FFEDE6] text-[#5D4037] font-bold text-xl w-full text-center">
+                                            北海道上白糖
+                                        </div>
+                                    </div>
+                                    
+                                    <p className="mt-4 text-sm text-[#FF8C94] font-bold text-center">
+                                        就這樣，單純得可愛！
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
