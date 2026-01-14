@@ -239,8 +239,8 @@
                 <nav className={`fixed w-full z-40 transition-all duration-300 ${scrolled ? 'bg-[#FFF8F5]/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6 text-white'}`}>
                     <div className="container mx-auto px-6 flex justify-between items-center">
                     <div className={`text-2xl font-bold tracking-widest cursor-pointer flex flex-col items-center ${scrolled ? 'text-[#5D4037]' : 'text-white'}`} onClick={() => window.scrollTo(0,0)}>
-                        <span className="font-serif italic text-3xl">Bloom.</span>
-                        <span className="text-xs tracking-[0.2em] font-medium">大人牛乳</span>
+                        <span className="font-serif italic text-3xl">大人牛乳</span>
+                        <span className="text-xs tracking-[0.2em] font-medium">Bloom.</span>
                     </div>
                     
                     {/* Desktop Menu */}
@@ -248,7 +248,7 @@
                         <button onClick={() => scrollToSection('about')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">初心故事</button>
                         <button onClick={() => scrollToSection('ingredients')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">四大堅持</button>
                         <button onClick={() => scrollToSection('new-arrival')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">新品登場</button>
-                        <button onClick={() => scrollToSection('shop')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">把美味帶回家</button>
+                        <button onClick={() => scrollToSection('shop')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">立即預購</button>
                         <div className="relative cursor-pointer hover:scale-110 transition text-[#FF8C94]">
                         <div className={`p-2 rounded-full ${scrolled ? 'bg-[#FFEDE6]' : 'bg-white/20'}`}>
                             <ShoppingCart size={20} className={scrolled ? 'text-[#5D4037]' : 'text-white'} />
@@ -275,7 +275,7 @@
                         <button onClick={() => scrollToSection('about')} className="text-left text-lg py-3 border-b border-dashed border-[#FFB7B2]">初心故事</button>
                         <button onClick={() => scrollToSection('ingredients')} className="text-left text-lg py-3 border-b border-dashed border-[#FFB7B2]">四大堅持</button>
                         <button onClick={() => scrollToSection('new-arrival')} className="text-left text-lg py-3 border-b border-dashed border-[#FFB7B2]">新品登場</button>
-                        <button onClick={() => scrollToSection('shop')} className="text-left text-lg py-3 font-bold text-[#FF8C94]">把美味帶回家</button>
+                        <button onClick={() => scrollToSection('shop')} className="text-left text-lg py-3 font-bold text-[#FF8C94]">立即預購</button>
                     </div>
                     )}
                 </nav>
@@ -858,7 +858,7 @@
                     <h3 className="text-2xl text-white font-medium mb-4">還沒空來礁溪度假？</h3>
                     <p className="mb-8 opacity-80">沒關係，先讓您的味蕾去旅行。</p>
                     <button onClick={() => scrollToSection('shop')} className="bg-[#FFEDE6] text-[#5D4037] px-8 py-3 rounded-full font-bold hover:bg-[#FFB7B2] hover:text-white transition mb-16 shadow-lg">
-                        立即訂購，直送到府
+                        立即預購，直送到府
                     </button>
 
                     <div className="border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center">
