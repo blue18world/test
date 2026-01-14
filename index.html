@@ -41,7 +41,7 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // --- 圖示組件 (手動定義以移除外部依賴) ---
+        // --- 圖示組件 ---
         const IconBase = ({ children, size = 24, className = "" }) => (
             <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -75,6 +75,7 @@
         const Heart = (props) => <IconBase {...props}><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></IconBase>;
         const Smile = (props) => <IconBase {...props}><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></IconBase>;
         const Sparkles = (props) => <IconBase {...props}><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M9 3v4"/><path d="M2 7h6"/><path d="M2 3h6"/></IconBase>;
+        const Truck = (props) => <IconBase {...props}><rect width="16" height="13" x="1" y="3" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></IconBase>;
 
         // --- SVG 插圖組件 ---
 
@@ -231,15 +232,15 @@
                 
                 {/* Toast Notification */}
                 <div className={`fixed top-24 right-5 z-50 bg-[#8D6E63] text-white px-6 py-3 rounded-2xl shadow-lg transition-opacity duration-300 flex items-center gap-2 ${showToast ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                    <Smile size={20} /> 已偷偷放入購物車囉！
+                    <Smile size={20} /> 已加入購物車
                 </div>
 
                 {/* Navigation */}
                 <nav className={`fixed w-full z-40 transition-all duration-300 ${scrolled ? 'bg-[#FFF8F5]/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6 text-white'}`}>
                     <div className="container mx-auto px-6 flex justify-between items-center">
                     <div className={`text-2xl font-bold tracking-widest cursor-pointer flex flex-col items-center ${scrolled ? 'text-[#5D4037]' : 'text-white'}`} onClick={() => window.scrollTo(0,0)}>
-                        <span className="font-serif italic text-3xl">大人牛乳</span>
-                        <span className="text-xs tracking-[0.2em] font-medium">Let it bloom.</span>
+                        <span className="font-serif italic text-3xl">Bloom.</span>
+                        <span className="text-xs tracking-[0.2em] font-medium">大人牛乳</span>
                     </div>
                     
                     {/* Desktop Menu */}
@@ -247,7 +248,7 @@
                         <button onClick={() => scrollToSection('about')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">初心故事</button>
                         <button onClick={() => scrollToSection('ingredients')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">四大堅持</button>
                         <button onClick={() => scrollToSection('new-arrival')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">新品登場</button>
-                        <button onClick={() => scrollToSection('shop')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">立即訂購</button>
+                        <button onClick={() => scrollToSection('shop')} className="hover:text-[#FF8C94] transition transform hover:-translate-y-0.5">把美味帶回家</button>
                         <div className="relative cursor-pointer hover:scale-110 transition text-[#FF8C94]">
                         <div className={`p-2 rounded-full ${scrolled ? 'bg-[#FFEDE6]' : 'bg-white/20'}`}>
                             <ShoppingCart size={20} className={scrolled ? 'text-[#5D4037]' : 'text-white'} />
@@ -291,17 +292,17 @@
                         <span className="tracking-widest text-sm font-medium">✨ 宜蘭礁溪．隱藏版必喝</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-sm tracking-wide">
-                        一秒飛日本！<br/>
-                        重現北海道那口 <span className="font-serif italic text-[#FFDAC1]">純粹感動</span>
+                        彷彿置身北海道<br/>
+                        重現那口 <span className="font-serif italic text-[#FFDAC1]">純粹感動</span>
                     </h1>
                     <p className="text-lg md:text-xl mb-10 font-light tracking-wider opacity-95 text-[#FFF5F2]">
-                        不用請假飛出國，<br/>這瓶「神級」咖啡牛乳，直接宅配到你手心！
+                        無需遠行，<br/>這份來自礁溪的頂級美味，為您宅配到府。
                     </p>
                     <button 
                         onClick={() => scrollToSection('shop')}
                         className="bg-[#FFB7B2] text-[#5D4037] px-10 py-4 rounded-full text-lg font-bold hover:bg-[#FFDAC1] transition transform hover:scale-105 shadow-[0_4px_14px_0_rgba(255,183,178,0.39)] flex items-center gap-2 mx-auto"
                     >
-                        <Sparkles size={20} /> 我想喝喝看
+                        <Sparkles size={20} /> 品嚐純粹滋味
                     </button>
                     </div>
                     
@@ -309,6 +310,44 @@
                     <ChevronDown size={32} />
                     </div>
                 </header>
+
+                {/* 1.5 Who is a Fan Section */}
+                <section className="py-24 px-6 bg-[#FFF3E0] relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-32 h-32 bg-[#FFB7B2] rounded-full mix-blend-multiply filter blur-2xl opacity-40"></div>
+                    <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#FFDAC1] rounded-full mix-blend-multiply filter blur-2xl opacity-40"></div>
+
+                    <div className="container mx-auto px-6 max-w-4xl relative z-10 text-center">
+                        <div className="inline-block bg-white text-[#5D4037] px-6 py-2 rounded-full text-sm font-bold tracking-wider mb-6 shadow-sm">
+                            FANS LOVE
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#5D4037] mb-8">
+                            誰是大人牛乳的粉絲？
+                        </h2>
+                        
+                        <div className="bg-white/60 backdrop-blur-sm rounded-[3rem] p-8 md:p-12 border-2 border-[#FFEDE6] shadow-lg">
+                            <div className="flex justify-center gap-4 mb-8">
+                                <div className="w-12 h-12 bg-[#FFEDE6] rounded-full flex items-center justify-center text-[#5D4037]"><Heart size={20} /></div>
+                                <div className="w-12 h-12 bg-[#FFEDE6] rounded-full flex items-center justify-center text-[#5D4037]"><MapPin size={20} /></div>
+                                <div className="w-12 h-12 bg-[#FFEDE6] rounded-full flex items-center justify-center text-[#5D4037]"><Smile size={20} /></div>
+                            </div>
+
+                            <p className="text-xl text-[#5D4037] leading-relaxed font-medium mb-8">
+                                大人牛乳總是受到<span className="text-[#FF8C94]">熱愛生活</span>、<span className="text-[#FF8C94]">旅行</span>、<span className="text-[#FF8C94]">閱讀</span>、<span className="text-[#FF8C94]">品飲</span>這類美好事物的人們喜愛！
+                            </p>
+                            <div className="w-16 h-1 bg-[#FFB7B2] mx-auto mb-8 rounded-full"></div>
+                            <p className="text-[#8D6E63] text-lg leading-relaxed">
+                                我們抗拒有毒的食材，厭惡辦公室政治，<br className="hidden md:block"/>
+                                重視人與人之間的真誠交流，享受善良帶來的一切美好。
+                            </p>
+                            
+                            <div className="flex flex-wrap justify-center gap-3 mt-8">
+                                <span className="bg-[#5D4037] text-white px-4 py-1 rounded-full text-sm">#拒絕有毒</span>
+                                <span className="bg-[#5D4037] text-white px-4 py-1 rounded-full text-sm">#真誠交流</span>
+                                <span className="bg-[#5D4037] text-white px-4 py-1 rounded-full text-sm">#善良美好</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 {/* 2. Pain Points & Resonance */}
                 <section className="py-24 px-6 bg-[#FFF8F5] text-center relative overflow-hidden">
@@ -328,14 +367,14 @@
                     <div className="bg-white/60 backdrop-blur-sm p-8 rounded-[2rem] shadow-sm border border-[#FFEDE6]">
                         <div className="space-y-6 text-lg text-[#8D6E63] leading-relaxed">
                         <p>
-                            市售咖啡牛乳總有一堆看不懂的化學算式...<br/>
-                            你想找的，是不是那個喝完會不自覺<span className="text-[#FF8C94] font-bold">「嘴角失守」</span>的味道？
+                            市售咖啡乳常有許多看不懂的成分...<br/>
+                            您是否也在尋找，那種喝完會讓人<span className="text-[#FF8C94] font-bold">「會心一笑」</span>的純粹味道？
                         </p>
                         <div className="flex justify-center my-4">
                             <div className="w-16 h-1 bg-[#FFB7B2] rounded-full"></div>
                         </div>
                         <p className="font-bold text-xl text-[#5D4037]">
-                            不用找了，就是這瓶！
+                            大人牛乳，就是為了這份純粹而生。
                         </p>
                         <p>
                             這不是化學調味乳，這是獻給大人的天然香醇。<br/>
@@ -355,8 +394,8 @@
                         <div className="inline-block bg-[#FFEDE6] text-[#FF8C94] px-4 py-1 rounded-full text-sm font-bold tracking-wider mb-3">
                         NATURAL INGREDIENTS
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#5D4037] mb-4">100% 純天然的偏執</h2>
-                        <p className="text-[#8D6E63]">我們把世界最好的，都裝進這個可愛的瓶子裡啦！</p>
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#5D4037] mb-4">100% 純天然的堅持</h2>
+                        <p className="text-[#8D6E63]">我們將世界各地的美好，都收藏進這只瓶子裡。</p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -368,9 +407,9 @@
                             <Coffee size={20} />
                             </div>
                         </div>
-                        <h3 className="text-xl font-bold mb-3 text-[#5D4037]">靈魂｜冠軍的「神之手」</h3>
+                        <h3 className="text-xl font-bold mb-3 text-[#5D4037]">靈魂｜冠軍烘豆師監製</h3>
                         <p className="text-[#8D6E63] text-sm leading-relaxed">
-                            嚴選精品豆，由全球CR最高分烘豆師 Gary 親自操刀。喝得到堅果巧克力香，尾韻回甘超迷人！
+                            嚴選精品豆，由 CR 最高分烘豆師 Gary 親自操刀。帶有天然堅果與巧克力香氣，尾韻回甘迷人。
                         </p>
                         </div>
 
@@ -382,9 +421,9 @@
                             <Droplets size={20} />
                             </div>
                         </div>
-                        <h3 className="text-xl font-bold mb-3 text-[#5D4037]">身體｜鮮乳界的愛馬仕</h3>
+                        <h3 className="text-xl font-bold mb-3 text-[#5D4037]">身體｜吉蒸牧場頂級鮮乳</h3>
                         <p className="text-[#8D6E63] text-sm leading-relaxed">
-                            來自花蓮吉蒸牧場的單一乳源，濃郁又絲滑，跟我們的咖啡根本是天生一對！
+                            來自花蓮吉蒸牧場的單一乳源，濃郁又絲滑，與我們的咖啡完美融合。
                         </p>
                         </div>
 
@@ -396,9 +435,9 @@
                             <Heart size={20} />
                             </div>
                         </div>
-                        <h3 className="text-xl font-bold mb-3 text-[#5D4037]">點綴｜雪一般的溫柔</h3>
+                        <h3 className="text-xl font-bold mb-3 text-[#5D4037]">點綴｜北海道上白糖</h3>
                         <p className="text-[#8D6E63] text-sm leading-relaxed">
-                            死甜走開！北海道特級上白糖，清爽不膩，就像溫柔的配角，絕不搶了咖啡的主戲。
+                            拒絕死甜。北海道特級上白糖，清爽不膩，優雅襯托咖啡香氣。
                         </p>
                         </div>
 
@@ -410,9 +449,9 @@
                             <Droplets size={20} />
                             </div>
                         </div>
-                        <h3 className="text-xl font-bold mb-3 text-[#5D4037]">基底｜雪山泉水加持</h3>
+                        <h3 className="text-xl font-bold mb-3 text-[#5D4037]">基底｜雪山山脈純淨泉水</h3>
                         <p className="text-[#8D6E63] text-sm leading-relaxed">
-                            好水才泡得出好咖啡嘛！宜蘭限定的雪山山脈泉水，純淨甘甜，每一口都是大自然的禮物。
+                            好水，才能泡出好咖啡。宜蘭限定的雪山山脈泉水，純淨甘甜，每一口都是大自然的禮物。
                         </p>
                         </div>
                     </div>
@@ -420,13 +459,57 @@
                     <div className="absolute bottom-0 left-0 w-full h-12 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDEyMCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PHBhdGggZD0iTTAgMGw2MDAgOTAgNjAwLTkwdjEyMEgwVjB6IiBmaWxsPSIjRkZFOEU2Ii8+PC9zdmc+')]"></div>
                 </section>
 
+                {/* 3.5 What is the Taste Section */}
+                <section className="py-24 px-6 bg-[#F5F5F0]">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <div className="inline-block bg-[#5D4037] text-[#FFDAC1] px-6 py-2 rounded-full text-sm font-bold tracking-wider mb-6 shadow-md">
+                            TASTE PROFILE
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#5D4037] mb-8">
+                            大人牛乳到底是什麼味道？
+                        </h2>
+                        
+                        <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-[#E0E0E0] relative">
+                            {/* Decorative quotes */}
+                            <div className="absolute top-4 left-4 text-6xl text-[#E0E0E0] opacity-50 font-serif">“</div>
+                            <div className="absolute bottom-4 right-4 text-6xl text-[#E0E0E0] opacity-50 font-serif transform rotate-180">“</div>
+
+                            <div className="space-y-6 text-lg text-[#8D6E63] leading-relaxed">
+                                <p>
+                                    不同於市售調味乳的人工甜膩，<br/>
+                                    也不同於一般拿鐵的苦澀厚重。
+                                </p>
+                                <hr className="w-1/3 mx-auto border-[#E0E0E0] my-4"/>
+                                <p className="text-xl">
+                                    真正的日式咖啡牛乳，是溫柔的。<br/>
+                                    <span className="text-[#5D4037] font-bold text-2xl">不酸、不苦、不澀，只有溫潤。</span>
+                                </p>
+                                <p>
+                                    我們完美融合了咖啡的堅果香氣與鮮乳的絲滑口感，<br/>
+                                    引出了兩者最原始的自然甜感。
+                                </p>
+                                <div className="flex flex-col md:flex-row justify-center gap-6 mt-8">
+                                    <div className="bg-[#5D4037] text-white p-4 rounded-xl flex-1">
+                                        <div className="font-bold text-lg mb-1">無糖</div>
+                                        <div className="text-sm opacity-90">品嚐經典的純粹底蘊</div>
+                                    </div>
+                                    <div className="bg-[#FF8C94] text-white p-4 rounded-xl flex-1">
+                                        <div className="font-bold text-lg mb-1">微糖</div>
+                                        <div className="text-sm opacity-90">感受溫柔的幸福滋味</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 {/* 4. Testimonials */}
                 <section className="py-24 bg-[#FFEDE6]">
                     <div className="container mx-auto px-6">
                     <div className="text-center mb-12">
                         <span className="text-[#FF8C94] font-bold tracking-widest uppercase text-sm bg-white px-4 py-1 rounded-full shadow-sm">Testimonials</span>
-                        <h2 className="text-3xl font-bold mt-4 text-[#5D4037]">來自溫泉鄉的「秘密暗號」</h2>
-                        <p className="text-[#8D6E63] mt-2">住過礁溪五星飯店，都知道這瓶有多厲害</p>
+                        <h2 className="text-3xl font-bold mt-4 text-[#5D4037]">來自溫泉鄉的口碑推薦</h2>
+                        <p className="text-[#8D6E63] mt-2">礁溪五星飯店住客的真實反饋</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -436,7 +519,7 @@
                             <span className="text-2xl font-serif">“</span>
                         </div>
                         <div className="flex text-[#FFB7B2] mb-4"><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/></div>
-                        <p className="text-[#5D4037] mb-6 leading-relaxed">「喝過大人牛乳，真的回不去超商了啦！那種濃郁又不膩的口感，真的是宜蘭之光！最近新出的達克瓦茲更是驚艷，配無糖咖啡根本絕配，辦公室團購王就是它！」</p>
+                        <p className="text-[#5D4037] mb-6 leading-relaxed">「喝過大人牛乳，真的就很難再接受便利商店的口感了。那種濃郁又不膩的口感，真的是宜蘭之光！最近新出的達克瓦茲更是驚艷，配無糖咖啡根本絕配，是我們辦公室的午茶首選。」</p>
                         <div className="flex items-center">
                             <div className="w-12 h-12 bg-[#FFEDE6] rounded-full flex items-center justify-center font-bold text-[#FF8C94]">B</div>
                             <div className="ml-3">
@@ -452,7 +535,7 @@
                             <span className="text-2xl font-serif">”</span>
                         </div>
                         <div className="flex text-[#FFB7B2] mb-4"><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/><Star fill="currentColor" size={20}/></div>
-                        <p className="text-[#5D4037] mb-6 leading-relaxed">「每次去礁溪住老爺或寒沐，回程後車廂一定要塞一手大人牛乳。現在能宅配真的太方便了，完全是我們辦公室下午茶的救星！」</p>
+                        <p className="text-[#5D4037] mb-6 leading-relaxed">「每次去礁溪住老爺或寒沐，回程總要帶上一手大人牛乳。現在能宅配真的太方便了，完全是我們辦公室下午茶的美好補給！」</p>
                         <div className="flex items-center">
                             <div className="w-12 h-12 bg-[#FFEDE6] rounded-full flex items-center justify-center font-bold text-[#FF8C94]">G</div>
                             <div className="ml-3">
@@ -460,50 +543,6 @@
                             <p className="text-xs text-[#8D6E63]">忠實粉絲</p>
                             </div>
                         </div>
-                        </div>
-                    </div>
-                    </div>
-                </section>
-
-                {/* 5. New Product: Dacquoise */}
-                <section id="new-arrival" className="py-24 bg-[#FFF8F5] relative">
-                    <div className="container mx-auto px-6 max-w-6xl">
-                    <div className="flex flex-col lg:flex-row items-center gap-12">
-                        <div className="lg:w-1/2 relative">
-                        <div className="absolute -top-6 -left-6 w-24 h-24 bg-[#FFDAC1] rounded-full opacity-50 z-0"></div>
-                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#FFB7B2] rounded-full opacity-50 z-0"></div>
-                        {/* New Product Image replaced with SVG */}
-                        <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition duration-500 border-4 border-white z-10 bg-[#FFF3E0]">
-                            <DacquoiseIllustration />
-                            <div className="absolute bottom-6 left-6 bg-white/95 px-6 py-2 rounded-full shadow-md text-[#5D4037]">
-                                <span className="font-bold tracking-widest flex items-center gap-2"><Sparkles size={16} className="text-[#FF8C94]"/> 2026 NEW</span>
-                            </div>
-                        </div>
-                        </div>
-                        
-                        <div className="lg:w-1/2 space-y-6">
-                        <h2 className="text-sm font-bold tracking-[0.2em] text-[#FF8C94] bg-[#FFEDE6] inline-block px-3 py-1 rounded-lg">真大人的知己</h2>
-                        <h3 className="text-4xl md:text-5xl font-bold text-[#5D4037]">
-                            咖啡牛乳達克瓦茲<br/>
-                            <span className="text-2xl md:text-3xl font-medium mt-3 block text-[#8D6E63] font-serif italic">幸福，原來可以這麼輕盈</span>
-                        </h3>
-                        <p className="text-[#8D6E63] leading-relaxed text-lg">
-                            懂喝咖啡的你，一定懂這款甜點的溫柔。這是我們專為搭配無糖「真大人」系列所設計的靈魂伴侶。
-                        </p>
-                        <div className="bg-white p-6 rounded-3xl border-2 border-[#FFEDE6] shadow-sm relative">
-                            <div className="absolute -top-3 -left-2 text-4xl text-[#FFB7B2]">❝</div>
-                            <p className="italic text-[#5D4037] relative z-10">
-                            「為了這口『入口即化』，我們不惜成本選用烘焙界的貴族食材。淡淡的咖啡牛乳香氣在口中化開，不搶戲、不過甜，只有純粹的幸福感。」
-                            </p>
-                        </div>
-                        <ul className="space-y-3">
-                            <li className="flex items-center text-[#5D4037]"><span className="w-6 h-6 bg-[#FFB7B2] text-white rounded-full mr-3 flex items-center justify-center text-xs">✓</span>藍鑽杏仁粉 x 阿根廷奶油</li>
-                            <li className="flex items-center text-[#5D4037]"><span className="w-6 h-6 bg-[#FFB7B2] text-white rounded-full mr-3 flex items-center justify-center text-xs">✓</span>沒有可怕的甜膩奶腥味</li>
-                            <li className="flex items-center text-[#5D4037]"><span className="w-6 h-6 bg-[#FFB7B2] text-white rounded-full mr-3 flex items-center justify-center text-xs">✓</span>頂級食材的優雅餘韻</li>
-                        </ul>
-                        <button onClick={() => scrollToSection('shop')} className="mt-4 bg-[#5D4037] text-white px-8 py-3 rounded-2xl hover:bg-[#8D6E63] transition shadow-lg hover:shadow-xl">
-                            嚐嚐輕盈的幸福
-                        </button>
                         </div>
                     </div>
                     </div>
@@ -571,7 +610,7 @@
                                     </div>
                                     
                                     <p className="mt-4 text-sm text-[#FF8C94] font-bold text-center">
-                                        就這麼單純！
+                                        就這樣，單純得可愛！
                                     </p>
                                 </div>
                             </div>
@@ -587,20 +626,20 @@
                     <div className="container mx-auto px-6 max-w-5xl relative z-10">
                     <div className="flex flex-col md:flex-row gap-16 items-center">
                         <div className="md:w-1/2 space-y-6">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">老闆的任性</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">品牌的初心</h2>
                         <div className="w-16 h-2 bg-[#FFB7B2] rounded-full"></div>
                         <p className="leading-relaxed text-lg text-[#FFDAC1]">
                             一切都是從北海道那瓶牛奶開始的。
                         </p>
                         <p className="opacity-90 leading-relaxed">
-                            故事的開始，是老闆在日本北海道旅行時的一次偶遇。那瓶在地牛乳的風味，純粹得令人震撼——沒有香精的假味，只有食材本身的香氣。
+                            故事的開始，是老闆在日本北海道旅行時的一次偶遇。那瓶在地牛乳的風味，純粹得令人震撼——沒有香精的假味，只有食材本身的厚度。
                         </p>
                         <p className="opacity-90 leading-relaxed">
-                            回到台灣後，老闆一直忘不了那個味道，嘴巴變刁了，找不到好喝的。「既然買不到，那乾脆自己做吧！」就憑著這股任性的傻勁，耗了一整年，試喝到手抖心悸，才終於調出這完美比例。
+                            回到台灣後，這份味道始終揮之不去。憑著一股對美味的執著，我們耗時一年，歷經無數次測試，只為調配出最完美的比例。
                         </p>
                         <div className="bg-[#FFF8F5]/10 p-6 rounded-3xl backdrop-blur-sm border border-white/10 my-6">
                             <blockquote className="text-xl italic text-white text-center">
-                            「如果要做，就要做自己也敢天天喝的！」
+                            「要做，就要做自己也願意天天喝的。」
                             </blockquote>
                         </div>
                         <p className="text-[#FFB7B2] font-medium flex items-center gap-2">
@@ -617,130 +656,170 @@
                     </div>
                 </section>
 
-                {/* 7. Product Shop Section */}
-                <section id="shop" className="py-24 px-6 bg-white relative">
-                    <div className="max-w-6xl mx-auto">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-[#5D4037]">隨時隨地，享受奢華</h2>
-                        <p className="text-[#8D6E63] mt-4">看看今天想帶誰回家？</p>
-                        <div className="w-24 h-1 bg-[#FFB7B2] mx-auto mt-6 rounded-full"></div>
-                    </div>
-
-                    {/* Individual Products */}
-                    <div className="mb-20">
-                        <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-[#5D4037]">
-                        <span className="w-8 h-8 bg-[#FFEDE6] rounded-full flex items-center justify-center text-[#FF8C94] text-sm">01</span>
-                        單品選購
-                        </h3>
-                        <div className="grid md:grid-cols-3 gap-8">
-                        {/* Product 1 */}
-                        <div className="bg-white border-2 border-[#FFEDE6] rounded-[2rem] overflow-hidden hover:shadow-xl transition duration-300 hover:border-[#FFB7B2] group">
-                            <div className="bg-[#FFF8F5] h-60 flex items-center justify-center p-4 relative overflow-hidden">
-                            <div className="absolute w-40 h-40 bg-[#FFDAC1] rounded-full opacity-50 blur-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-                            <div className="w-32 h-48 relative z-10 group-hover:scale-105 transition duration-500">
-                                <ProductBottle size="sm" />
-                            </div>
-                            </div>
-                            <div className="p-6">
-                            <div className="flex justify-between items-start mb-2">
-                                <h4 className="text-lg font-bold text-[#5D4037]">經典大人牛乳 <span className="text-sm font-normal text-[#8D6E63] block mt-1">輕巧獨享瓶 (300ml)</span></h4>
-                                <span className="text-xl font-bold text-[#FF8C94]">$120</span>
-                            </div>
-                            <p className="text-sm text-[#8D6E63] mb-4">早餐喚醒、午後提神，一手掌握剛剛好。</p>
-                            <button onClick={addToCart} className="w-full bg-[#5D4037] text-white py-3 rounded-xl hover:bg-[#8D6E63] transition flex justify-center items-center gap-2">
-                                + 加入購物車
-                            </button>
+                {/* 5. New Product: Dacquoise */}
+                <section id="new-arrival" className="py-24 bg-[#FFF8F5] relative">
+                    <div className="container mx-auto px-6 max-w-6xl">
+                    <div className="flex flex-col lg:flex-row items-center gap-12">
+                        <div className="lg:w-1/2 relative">
+                        <div className="absolute -top-6 -left-6 w-24 h-24 bg-[#FFDAC1] rounded-full opacity-50 z-0"></div>
+                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#FFB7B2] rounded-full opacity-50 z-0"></div>
+                        {/* New Product Image replaced with SVG */}
+                        <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition duration-500 border-4 border-white z-10 bg-[#FFF3E0]">
+                            <DacquoiseIllustration />
+                            <div className="absolute bottom-6 left-6 bg-white/95 px-6 py-2 rounded-full shadow-md text-[#5D4037]">
+                                <span className="font-bold tracking-widest flex items-center gap-2"><Sparkles size={16} className="text-[#FF8C94]"/> 2026 NEW</span>
                             </div>
                         </div>
-
-                        {/* Product 2 */}
-                        <div className="bg-white border-2 border-[#FFEDE6] rounded-[2rem] overflow-hidden hover:shadow-xl transition duration-300 hover:border-[#FFB7B2] group">
-                            <div className="bg-[#FFF8F5] h-60 flex items-center justify-center p-4 relative overflow-hidden">
-                            <div className="absolute w-40 h-40 bg-[#FFB7B2] rounded-full opacity-40 blur-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-                            <div className="w-40 h-52 relative z-10 group-hover:scale-105 transition duration-500">
-                                <ProductBottle size="lg" />
-                            </div>
-                            </div>
-                            <div className="p-6">
-                            <div className="flex justify-between items-start mb-2">
-                                <h4 className="text-lg font-bold text-[#5D4037]">經典大人牛乳 <span className="text-sm font-normal text-[#8D6E63] block mt-1">豪邁分享瓶 (1000ml)</span></h4>
-                                <span className="text-xl font-bold text-[#FF8C94]">$360</span>
-                            </div>
-                            <p className="text-sm text-[#8D6E63] mb-4">家庭常備、辦公室分享，CP值最高。</p>
-                            <button onClick={addToCart} className="w-full bg-[#5D4037] text-white py-3 rounded-xl hover:bg-[#8D6E63] transition flex justify-center items-center gap-2">
-                                + 加入購物車
-                            </button>
-                            </div>
-                        </div>
-
-                        {/* Product 3 */}
-                        <div className="bg-white border-2 border-[#FFEDE6] rounded-[2rem] overflow-hidden hover:shadow-xl transition duration-300 hover:border-[#FFB7B2] group">
-                            <div className="bg-[#FFF8F5] h-60 flex items-center justify-center p-4 relative">
-                            <div className="w-48 h-48 group-hover:scale-105 transition duration-500">
-                                <DacquoiseIllustration />
-                            </div>
-                            </div>
-                            <div className="p-6">
-                            <div className="flex justify-between items-start mb-2">
-                                <h4 className="text-lg font-bold text-[#5D4037]">咖啡牛乳達克瓦茲 <span className="text-sm font-normal text-[#8D6E63] block mt-1">6入禮盒</span></h4>
-                                <span className="text-xl font-bold text-[#FF8C94]">$100</span>
-                            </div>
-                            <p className="text-sm text-[#8D6E63] mb-4">採用藍鑽杏仁粉與阿根廷奶油，極致細膩。</p>
-                            <button onClick={addToCart} className="w-full bg-[#5D4037] text-white py-3 rounded-xl hover:bg-[#8D6E63] transition flex justify-center items-center gap-2">
-                                + 加入購物車
-                            </button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    {/* Bundles */}
-                    <div>
-                        <div className="flex items-center mb-8">
-                        <span className="bg-[#FF8C94] text-white text-xs px-3 py-1 rounded-full mr-3 font-bold shadow-sm">HOT</span>
-                        <h3 className="text-2xl font-bold flex-grow text-[#5D4037]">官網限定．超值組合</h3>
                         </div>
                         
-                        <div className="grid md:grid-cols-3 gap-6">
-                        {/* Bundle 1 */}
-                        <div className="bg-[#FFF8F5] p-6 rounded-[2rem] border border-[#FFEDE6] flex flex-col hover:border-[#FFB7B2] transition">
-                            <div className="mb-4">
-                            <h4 className="text-lg font-bold text-[#5D4037] mb-1">【入門首選】經典嚐鮮組</h4>
-                            <p className="text-[#8D6E63] text-sm bg-white inline-block px-2 py-1 rounded-lg">300ml x 6入</p>
+                        <div className="lg:w-1/2 space-y-6">
+                        <h2 className="text-sm font-bold tracking-[0.2em] text-[#FF8C94] bg-[#FFEDE6] inline-block px-3 py-1 rounded-lg">真大人的知己</h2>
+                        <h3 className="text-4xl md:text-5xl font-bold text-[#5D4037]">
+                            咖啡牛乳達克瓦茲<br/>
+                            <span className="text-2xl md:text-3xl font-medium mt-3 block text-[#8D6E63] font-serif italic">幸福，原來可以這麼輕盈</span>
+                        </h3>
+                        <p className="text-[#8D6E63] leading-relaxed text-lg">
+                            懂喝咖啡的你，一定懂這款甜點的溫柔。這是我們專為搭配無糖「真大人」系列所設計的靈魂伴侶。
+                        </p>
+                        <div className="bg-white p-6 rounded-3xl border-2 border-[#FFEDE6] shadow-sm relative">
+                            <div className="absolute -top-3 -left-2 text-4xl text-[#FFB7B2]">❝</div>
+                            <p className="italic text-[#5D4037] relative z-10">
+                            「為了這口『入口即化』，我們不惜成本選用烘焙界的貴族食材。淡淡的咖啡牛乳香氣在口中化開，不搶戲、不過甜，只有純粹的幸福感。」
+                            </p>
+                        </div>
+                        <ul className="space-y-3">
+                            <li className="flex items-center text-[#5D4037]"><span className="w-6 h-6 bg-[#FFB7B2] text-white rounded-full mr-3 flex items-center justify-center text-xs">✓</span>藍鑽杏仁粉 x 阿根廷奶油</li>
+                            <li className="flex items-center text-[#5D4037]"><span className="w-6 h-6 bg-[#FFB7B2] text-white rounded-full mr-3 flex items-center justify-center text-xs">✓</span>沒有市售甜點常見的甜膩與奶腥味</li>
+                            <li className="flex items-center text-[#5D4037]"><span className="w-6 h-6 bg-[#FFB7B2] text-white rounded-full mr-3 flex items-center justify-center text-xs">✓</span>頂級食材的優雅餘韻</li>
+                        </ul>
+                        <button onClick={() => scrollToSection('shop')} className="mt-4 bg-[#5D4037] text-white px-8 py-3 rounded-2xl hover:bg-[#8D6E63] transition shadow-lg hover:shadow-xl">
+                            品嚐輕盈美味
+                        </button>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+
+                {/* 5.5 ME TIME Section */}
+                <section className="py-24 px-6 bg-[#FFEDE6] relative overflow-hidden">
+                    <div className="max-w-4xl mx-auto text-center relative z-10">
+                        <div className="bg-white rounded-[3rem] p-10 md:p-16 shadow-xl border-4 border-[#FFF5F2]">
+                            <div className="flex justify-center items-center gap-3 mb-6">
+                                <Clock className="text-[#FF8C94]" size={32} />
+                                <span className="text-[#FF8C94] font-bold tracking-widest text-sm">AFTERNOON TEA</span>
                             </div>
-                            <div className="mt-auto flex justify-between items-center">
-                            <span className="text-2xl font-bold text-[#5D4037]">$720</span>
-                            <button onClick={addToCart} className="bg-[#FFB7B2] text-[#5D4037] px-6 py-2 rounded-full hover:bg-[#FFDAC1] transition text-sm font-bold">我要這組</button>
+                            
+                            <h2 className="text-3xl md:text-5xl font-bold text-[#5D4037] mb-8 leading-tight">
+                                每天留 10 分鐘<br/>
+                                給最珍貴的自己
+                            </h2>
+                            
+                            <div className="w-20 h-1 bg-[#FFB7B2] mx-auto mb-8 rounded-full"></div>
+
+                            <div className="space-y-6 text-lg text-[#8D6E63] leading-relaxed">
+                                <p>
+                                    忙碌了一整天，你有多久沒好好聽聽自己的心跳了？<br/>
+                                    這不只是一次下午茶，更是一場與自己（或閨蜜）的溫柔對話。
+                                </p>
+                                <p>
+                                    想像一下：<br/>
+                                    冰涼醇厚的<span className="text-[#5D4037] font-bold">大人牛乳</span>滑過喉嚨的瞬間，<br/>
+                                    配上一口外酥內軟、香氣四溢的<span className="text-[#5D4037] font-bold">達克瓦茲</span>...
+                                </p>
+                                <p className="font-serif italic text-xl text-[#5D4037]">
+                                    「啊，原來幸福可以這麼簡單。」
+                                </p>
+                                <p>
+                                    無論是想一個人靜靜充電的 <span className="font-bold">Me Time</span>，<br/>
+                                    還是與好姊妹大聊心事的 <span className="font-bold">We Time</span>，<br/>
+                                    這份美好搭配，是值得您體驗的療癒儀式。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* 7. Product Shop Section (Updated) */}
+                <section id="shop" className="py-24 px-6 bg-white relative">
+                    <div className="max-w-6xl mx-auto">
+                    <div className="text-center mb-10">
+                        <h2 className="text-4xl font-bold text-[#5D4037]">邀請您成為大人牛乳的粉絲</h2>
+                        <p className="text-[#8D6E63] mt-4 text-lg">把這份美好帶回家，加入懂生活的大人行列</p>
+                        <div className="mt-6 inline-block bg-[#FFF8F5] border-2 border-[#FFB7B2] rounded-2xl p-6 shadow-sm">
+                            <div className="flex flex-col md:flex-row items-center gap-4 text-[#8D6E63] font-bold">
+                                <span className="flex items-center gap-2"><Clock size={20}/> 每月第一週開放訂購</span>
+                                <span className="hidden md:block text-[#FFB7B2]">|</span>
+                                <span className="flex items-center gap-2"><Truck size={20}/> 隔月第二週出貨完畢</span>
+                                <span className="hidden md:block text-[#FFB7B2]">|</span>
+                                <span className="text-[#FF8C94]">⚠ 購物車售完不補</span>
+                            </div>
+                            <div className="mt-2 text-sm text-[#FF8C94] font-bold">全館滿 $2000 免運</div>
+                        </div>
+                    </div>
+
+                    {/* Products Grid */}
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {/* Option 1: 6 Milk */}
+                        <div className="bg-white border-2 border-[#FFEDE6] rounded-[2rem] overflow-hidden hover:shadow-xl transition duration-300 hover:border-[#FFB7B2] group flex flex-col">
+                            <div className="bg-[#FFF8F5] h-60 flex items-center justify-center p-4 relative overflow-hidden">
+                                <div className="absolute w-40 h-40 bg-[#FFDAC1] rounded-full opacity-50 blur-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                                <div className="w-32 h-48 relative z-10 group-hover:scale-105 transition duration-500">
+                                    <ProductBottle size="sm" />
+                                </div>
+                            </div>
+                            <div className="p-6 flex flex-col flex-grow">
+                                <div className="mb-2">
+                                    <h4 className="text-xl font-bold text-[#5D4037]">經典大人牛乳 <span className="text-sm font-normal text-[#8D6E63]">(6入)</span></h4>
+                                </div>
+                                <div className="text-3xl font-bold text-[#FF8C94] mb-2">$720</div>
+                                <p className="text-sm text-[#8D6E63] mb-6">告別連鎖店的商業口感，回歸純粹鮮乳咖啡香。推薦微糖，感受滿滿幸福感。</p>
+                                <button onClick={addToCart} className="mt-auto w-full bg-[#5D4037] text-white py-3 rounded-xl hover:bg-[#8D6E63] transition flex justify-center items-center gap-2">
+                                    + 加入購物車
+                                </button>
                             </div>
                         </div>
 
-                        {/* Bundle 2 */}
-                        <div className="bg-[#FFF8F5] p-6 rounded-[2rem] border border-[#FFEDE6] flex flex-col relative overflow-hidden hover:border-[#FFB7B2] transition">
-                            <div className="absolute -right-8 top-4 bg-[#5D4037] text-white text-xs py-1 px-10 rotate-45">大推</div>
-                            <div className="mb-4">
-                            <h4 className="text-lg font-bold text-[#5D4037] mb-1">【囤貨必備】極致享受組</h4>
-                            <p className="text-[#8D6E63] text-sm bg-white inline-block px-2 py-1 rounded-lg">1000ml x 2入 + 300ml x 2入</p>
+                        {/* Option 2: 6 Dacquoise */}
+                        <div className="bg-white border-2 border-[#FFEDE6] rounded-[2rem] overflow-hidden hover:shadow-xl transition duration-300 hover:border-[#FFB7B2] group flex flex-col">
+                            <div className="bg-[#FFF8F5] h-60 flex items-center justify-center p-4 relative overflow-hidden">
+                                <div className="absolute w-40 h-40 bg-[#FFB7B2] rounded-full opacity-40 blur-2xl top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                                <div className="w-48 h-48 relative z-10 group-hover:scale-105 transition duration-500">
+                                    <DacquoiseIllustration />
+                                </div>
                             </div>
-                            <div className="mt-auto flex justify-between items-center">
-                            <span className="text-2xl font-bold text-[#5D4037]">$960</span>
-                            <button onClick={addToCart} className="bg-[#FFB7B2] text-[#5D4037] px-6 py-2 rounded-full hover:bg-[#FFDAC1] transition text-sm font-bold">我要這組</button>
+                            <div className="p-6 flex flex-col flex-grow">
+                                <div className="mb-2">
+                                    <h4 className="text-xl font-bold text-[#5D4037]">咖啡牛乳達克瓦茲 <span className="text-sm font-normal text-[#8D6E63]">(6顆)</span></h4>
+                                </div>
+                                <div className="text-3xl font-bold text-[#FF8C94] mb-2">$600</div>
+                                <p className="text-sm text-[#8D6E63] mb-6">不會太甜且無奶腥味，搭無糖或有糖飲品都絕配。回購率極高，是我們引以為傲的經典甜點。</p>
+                                <button onClick={addToCart} className="mt-auto w-full bg-[#5D4037] text-white py-3 rounded-xl hover:bg-[#8D6E63] transition flex justify-center items-center gap-2">
+                                    + 加入購物車
+                                </button>
                             </div>
                         </div>
 
-                        {/* Bundle 3 */}
-                        <div className="bg-[#FFEDE6] p-6 rounded-[2rem] border border-[#FFDAC1] flex flex-col ring-4 ring-[#FFF8F5] shadow-lg">
-                            <div className="mb-4">
-                            <h4 className="text-lg font-bold text-[#5D4037] mb-1">【完美下午茶】真大人療癒組</h4>
-                            <p className="text-[#8D6E63] text-sm bg-white/50 inline-block px-2 py-1 rounded-lg">1000ml x 1入 + 達克瓦茲禮盒 x 1</p>
+                        {/* Option 3: Bundle (10+10) */}
+                        <div className="bg-[#FFEDE6] border-2 border-[#FFDAC1] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 group flex flex-col relative">
+                            <div className="absolute top-4 right-4 bg-[#FF8C94] text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm z-20">已達免運</div>
+                            <div className="bg-white/50 h-60 flex items-center justify-center p-4 relative overflow-hidden">
+                                <div className="absolute w-full h-full bg-gradient-to-br from-[#FFF3E0] to-transparent opacity-60"></div>
+                                <div className="flex items-end justify-center gap-2 relative z-10 group-hover:scale-105 transition duration-500">
+                                    <div className="w-24 h-36"><ProductBottle size="sm" /></div>
+                                    <div className="w-32 h-32"><DacquoiseIllustration /></div>
+                                </div>
                             </div>
-                            <div className="mt-auto flex justify-between items-center">
-                            <div>
-                                <span className="text-sm text-[#8D6E63] line-through mr-2">$500</span>
-                                <span className="text-2xl font-bold text-[#FF8C94]">$450</span>
+                            <div className="p-6 flex flex-col flex-grow">
+                                <div className="mb-2">
+                                    <h4 className="text-xl font-bold text-[#5D4037]">大人分享箱</h4>
+                                    <p className="text-sm text-[#8D6E63] mt-1">10瓶牛乳 + 10顆達克瓦茲</p>
+                                </div>
+                                <div className="text-3xl font-bold text-[#FF8C94] mb-2">$2200</div>
+                                <p className="text-sm text-[#8D6E63] mb-6">一次擁有完整的美味體驗。辦公室分享、家中常備的最愛。</p>
+                                <button onClick={addToCart} className="mt-auto w-full bg-[#FF8C94] text-white py-3 rounded-xl hover:bg-[#FFB7B2] transition flex justify-center items-center gap-2 font-bold shadow-md">
+                                    + 立即選購
+                                </button>
                             </div>
-                            <button onClick={addToCart} className="bg-[#FF8C94] text-white px-6 py-2 rounded-full hover:bg-[#FFB7B2] transition text-sm font-bold shadow-md">手刀搶購</button>
-                            </div>
-                        </div>
                         </div>
                     </div>
                     </div>
@@ -759,7 +838,7 @@
                     <div className="space-y-4">
                         <FaqItem 
                         q="這瓶可以放多久呀？" 
-                        a="我們沒有亂加防腐劑，透過 HPP 冷壓殺菌，未開封冷藏大概 20 天。達克瓦茲冷凍可以放 14 天，吃之前記得拿出來退冰一下喔！"
+                        a="因為我們沒有亂加防腐劑，透過 HPP 冷壓殺菌，未開封冷藏大概 20 天。達克瓦茲冷凍可以放 14 天，吃之前記得拿出來退冰一下喔！"
                         />
                         <FaqItem 
                         q="底部有黑黑的沉澱物是正常的嗎？" 
@@ -777,7 +856,7 @@
                 <footer className="bg-[#5D4037] text-[#FFDAC1] py-16 rounded-t-[3rem]">
                     <div className="container mx-auto px-6 text-center">
                     <h3 className="text-2xl text-white font-medium mb-4">還沒空來礁溪度假？</h3>
-                    <p className="mb-8 opacity-80">沒關係，先讓我帶你去旅行。</p>
+                    <p className="mb-8 opacity-80">沒關係，先讓您的味蕾去旅行。</p>
                     <button onClick={() => scrollToSection('shop')} className="bg-[#FFEDE6] text-[#5D4037] px-8 py-3 rounded-full font-bold hover:bg-[#FFB7B2] hover:text-white transition mb-16 shadow-lg">
                         立即訂購，直送到府
                     </button>
