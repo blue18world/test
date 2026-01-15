@@ -204,7 +204,7 @@
                 </div>
 
                 {/* Navigation */}
-                <nav className={`fixed w-full z-40 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6 text-[#3E2F2D]'}`}>
+                <nav className={`fixed w-full z-40 transition-all duration-300 top-0 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6 text-[#3E2F2D]'}`}>
                     <div className="container mx-auto px-6 flex justify-between items-center">
                     <div className={`text-2xl font-bold tracking-widest cursor-pointer flex flex-col items-center`} onClick={() => window.scrollTo(0,0)}>
                         <span className="font-rounded text-3xl text-[#3E2F2D]">大人牛乳</span>
@@ -339,7 +339,7 @@
                         </div>
                         <h3 className="text-xl font-bold mb-3 text-[#3E2F2D]">靈魂｜冠軍烘豆師監製</h3>
                         <p className="text-[#3E2F2D] text-sm leading-relaxed opacity-80">
-                            嚴選精品豆，由 CR 全球最高分烘豆師 Gary 親自操刀。帶有天然堅果與巧克力香氣，尾韻回甘迷人。
+                            嚴選精品豆，由 CR 最高分烘豆師 Gary 親自操刀。帶有天然堅果與巧克力香氣，尾韻回甘迷人。
                         </p>
                         </div>
 
@@ -560,7 +560,7 @@
                         <div className="bg-white p-6 rounded-3xl border-2 border-[#F6CED1] shadow-sm relative">
                             <div className="absolute -top-3 -left-2 text-4xl text-[#FFA39A]">❝</div>
                             <p className="italic text-[#3E2F2D] relative z-10">
-                            「為了要搭大人牛乳的這個小可愛，我們不惜成本選用烘焙界的貴族食材。淡淡的咖啡牛乳香氣在口中化開，不搶戲、不過甜，只有純粹的幸福感。」
+                            「為了要搭大人牛乳的這口小可愛，我們不惜成本選用烘焙界的貴族食材。淡淡的咖啡牛乳香氣在口中化開，不搶戲、不過甜，只有純粹的幸福感。」
                             </p>
                         </div>
                         <ul className="space-y-3">
@@ -660,14 +660,15 @@
                         <h2 className="text-4xl font-bold text-[#3E2F2D]">邀請您成為大人牛乳的粉絲</h2>
                         <p className="text-[#3E2F2D] mt-4 text-lg opacity-80">把這份美好帶回家，加入懂生活的大人行列</p>
                         <div className="mt-6 inline-block bg-[#F6CED1]/20 border-2 border-[#FFA39A] rounded-2xl p-6 shadow-sm">
-                            <div className="flex flex-col md:flex-row items-center gap-4 text-[#3E2F2D] font-bold">
-                                <span className="flex items-center gap-2"><Clock size={20}/> 每月第一週開放訂購</span>
+                            <div className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-4 md:gap-6 text-[#3E2F2D] font-bold text-sm">
+                                <span className="flex items-center gap-2"><Clock size={18}/> 固定 1-10 號預購</span>
                                 <span className="hidden md:block text-[#FFA39A]">|</span>
-                                <span className="flex items-center gap-2"><Truck size={20}/> 隔月第二週出貨完畢</span>
+                                <span className="flex items-center gap-2"><Truck size={18}/> 次月月底出貨</span>
                                 <span className="hidden md:block text-[#FFA39A]">|</span>
-                                <span className="text-[#D93B41]">⚠ 限量製作，售完為止</span>
+                                <span className="flex items-center gap-2">❄️ HPP殺菌保存20天</span>
                             </div>
-                            <div className="mt-2 text-sm text-[#D93B41] font-bold">全館滿 $2000 免運</div>
+                            <div className="mt-3 text-[#D93B41] font-bold text-sm">⚠ 限量製作，售完為止</div>
+                            <div className="mt-2 text-sm text-[#3E2F2D] border-t border-[#FFA39A] pt-2 inline-block px-4">全館滿 $2000 免運</div>
                         </div>
                     </div>
 
