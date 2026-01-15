@@ -278,71 +278,46 @@
                     </div>
                 </header>
 
-                {/* 1.5 Who is a Fan Section */}
-                <section className="py-24 px-6 bg-white relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-40 h-40 bg-[#F6CED1] rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-                    <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#FFA39A] rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-
-                    <div className="container mx-auto px-6 max-w-4xl relative z-10 text-center">
-                        <div className="inline-block bg-[#F6CED1] text-[#D93B41] px-6 py-2 rounded-full text-sm font-bold tracking-wider mb-6 shadow-sm">
-                            FANS LOVE
+                {/* 3.5 What is the Taste Section */}
+                <section className="py-24 px-6 bg-[#F6CED1]/30">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <div className="inline-block bg-[#3E2F2D] text-[#F6CED1] px-6 py-2 rounded-full text-sm font-bold tracking-wider mb-6 shadow-md">
+                            TASTE PROFILE
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold text-[#3E2F2D] mb-8">
-                            誰是大人牛乳的粉絲？
+                            大人牛乳到底是什麼味道？
                         </h2>
                         
-                        <div className="bg-white rounded-[3rem] p-8 md:p-12 border-2 border-[#F6CED1] shadow-lg">
-                            <div className="flex justify-center gap-4 mb-8">
-                                <div className="w-12 h-12 bg-[#F6CED1] rounded-full flex items-center justify-center text-[#D93B41]"><Heart size={20} /></div>
-                                <div className="w-12 h-12 bg-[#F6CED1] rounded-full flex items-center justify-center text-[#D93B41]"><MapPin size={20} /></div>
-                                <div className="w-12 h-12 bg-[#F6CED1] rounded-full flex items-center justify-center text-[#D93B41]"><Smile size={20} /></div>
-                            </div>
+                        <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-[#F6CED1] relative">
+                            <div className="absolute top-4 left-4 text-6xl text-[#F6CED1] opacity-50 font-serif">“</div>
+                            <div className="absolute bottom-4 right-4 text-6xl text-[#F6CED1] opacity-50 font-serif transform rotate-180">“</div>
 
-                            <p className="text-xl text-[#3E2F2D] leading-relaxed font-medium mb-8">
-                                大人牛乳總是受到<span className="text-[#D93B41]">熱愛生活</span>、<span className="text-[#D93B41]">旅行</span>、<span className="text-[#D93B41]">閱讀</span>、<span className="text-[#D93B41]">品飲</span>這類美好事物的人們喜愛！
-                            </p>
-                            <div className="w-16 h-1 bg-[#FFA39A] mx-auto mb-8 rounded-full"></div>
-                            <p className="text-[#3E2F2D] text-lg leading-relaxed opacity-80">
-                                我們抗拒有毒的食材，厭惡辦公室政治，<br className="hidden md:block"/>
-                                重視人與人之間的真誠交流，享受善良帶來的一切美好。
-                            </p>
-                            
-                            <div className="flex flex-wrap justify-center gap-3 mt-8">
-                                <span className="bg-[#3E2F2D] text-white px-4 py-1 rounded-full text-sm">#拒絕有毒</span>
-                                <span className="bg-[#3E2F2D] text-white px-4 py-1 rounded-full text-sm">#真誠交流</span>
-                                <span className="bg-[#3E2F2D] text-white px-4 py-1 rounded-full text-sm">#善良美好</span>
+                            <div className="space-y-6 text-lg text-[#3E2F2D] leading-relaxed">
+                                <p>
+                                    它不像市售調味乳，喝完只有滿嘴的<span className="text-[#D93B41]">化學甜味</span>；<br/>
+                                    也不像一般拿鐵，總是帶著令人皺眉的<span className="font-bold">苦澀厚重</span>。
+                                </p>
+                                <hr className="w-1/3 mx-auto border-[#F6CED1] my-4"/>
+                                <p className="text-xl">
+                                    真正的日式咖啡牛乳，是溫柔的。<br/>
+                                    <span className="text-[#D93B41] font-bold text-2xl">不酸、不苦、不澀，只有溫潤。</span>
+                                </p>
+                                <p>
+                                    我們完美融合了咖啡的堅果香氣與鮮乳的絲滑口感，<br/>
+                                    引出了兩者最原始的自然甜感。
+                                </p>
+                                <div className="flex flex-col md:flex-row justify-center gap-6 mt-8">
+                                    <div className="bg-[#3E2F2D] text-white p-4 rounded-xl flex-1">
+                                        <div className="font-bold text-lg mb-1">無糖</div>
+                                        <div className="text-sm opacity-90">品嚐經典的純粹底蘊</div>
+                                    </div>
+                                    <div className="bg-[#FFA39A] text-white p-4 rounded-xl flex-1">
+                                        <div className="font-bold text-lg mb-1">微糖</div>
+                                        <div className="text-sm opacity-90">感受溫柔的幸福滋味</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-
-                {/* 2. Pain Points & Resonance */}
-                <section className="py-24 px-6 bg-[#F6CED1] text-center relative overflow-hidden">
-                    <div className="max-w-3xl mx-auto relative z-10">
-                    <h2 className="text-2xl md:text-4xl font-bold text-[#3E2F2D] mb-8 leading-normal">
-                        「長大才懂，<br/>
-                        <span className="inline-block relative">
-                        簡單純粹，其實最難。
-                        </span>」
-                    </h2>
-                    <div className="bg-white/80 backdrop-blur-sm p-8 rounded-[2rem] shadow-sm">
-                        <div className="space-y-6 text-lg text-[#3E2F2D] leading-relaxed">
-                        <p>
-                            市售咖啡乳總有一堆看不懂的化學算式...<br/>
-                            您是否也在尋找，那種喝完會讓人<span className="text-[#D93B41] font-bold">「會心一笑」</span>的純粹味道？
-                        </p>
-                        <div className="flex justify-center my-4">
-                            <div className="w-16 h-1 bg-[#D93B41] rounded-full"></div>
-                        </div>
-                        <p className="font-bold text-xl text-[#3E2F2D]">
-                            這正是您在尋找的味道。
-                        </p>
-                        <p>
-                            這不是化學調味乳，這是獻給大人的天然香醇。<br/>
-                            耗時一年研發，我們把那次在北海道喝到的幸福感，通通裝進來了。
-                        </p>
-                        </div>
-                    </div>
                     </div>
                 </section>
 
@@ -353,7 +328,7 @@
                         <div className="inline-block bg-[#FFA39A] text-white px-4 py-1 rounded-full text-sm font-bold tracking-wider mb-3">
                         NATURAL INGREDIENTS
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#3E2F2D] mb-4">100% 純天然的堅持</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#3E2F2D] mb-4">100% 天然，世界級頂規配方</h2>
                         <p className="text-[#3E2F2D] opacity-80">我們把世界最好的，都裝進這個可愛的瓶子裡啦！</p>
                     </div>
 
@@ -417,56 +392,12 @@
                     </div>
                 </section>
 
-                {/* 3.5 What is the Taste Section */}
-                <section className="py-24 px-6 bg-[#F6CED1]/30">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <div className="inline-block bg-[#3E2F2D] text-[#F6CED1] px-6 py-2 rounded-full text-sm font-bold tracking-wider mb-6 shadow-md">
-                            TASTE PROFILE
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-[#3E2F2D] mb-8">
-                            大人牛乳到底是什麼味道？
-                        </h2>
-                        
-                        <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-[#F6CED1] relative">
-                            {/* Decorative quotes */}
-                            <div className="absolute top-4 left-4 text-6xl text-[#F6CED1] opacity-50 font-serif">“</div>
-                            <div className="absolute bottom-4 right-4 text-6xl text-[#F6CED1] opacity-50 font-serif transform rotate-180">“</div>
-
-                            <div className="space-y-6 text-lg text-[#3E2F2D] leading-relaxed">
-                                <p>
-                                    它不像市售調味乳，喝完只有滿嘴的<span className="text-[#D93B41]">化學甜味</span>；<br/>
-                                    也不像一般拿鐵，總是帶著令人皺眉的<span className="font-bold">苦澀厚重</span>。
-                                </p>
-                                <hr className="w-1/3 mx-auto border-[#F6CED1] my-4"/>
-                                <p className="text-xl">
-                                    真正的日式咖啡牛乳，是溫柔的。<br/>
-                                    <span className="text-[#D93B41] font-bold text-2xl">不酸、不苦、不澀，只有溫潤。</span>
-                                </p>
-                                <p>
-                                    我們完美融合了咖啡的堅果香氣與鮮乳的絲滑口感，<br/>
-                                    引出了兩者最原始的自然甜感。
-                                </p>
-                                <div className="flex flex-col md:flex-row justify-center gap-6 mt-8">
-                                    <div className="bg-[#3E2F2D] text-white p-4 rounded-xl flex-1">
-                                        <div className="font-bold text-lg mb-1">無糖</div>
-                                        <div className="text-sm opacity-90">品嚐經典的純粹底蘊</div>
-                                    </div>
-                                    <div className="bg-[#FFA39A] text-white p-4 rounded-xl flex-1">
-                                        <div className="font-bold text-lg mb-1">微糖</div>
-                                        <div className="text-sm opacity-90">感受溫柔的幸福滋味</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
                 {/* 4. Testimonials */}
                 <section className="py-24 bg-white">
                     <div className="container mx-auto px-6">
                     <div className="text-center mb-12">
                         <span className="text-[#D93B41] font-bold tracking-widest uppercase text-sm bg-[#F6CED1]/30 px-4 py-1 rounded-full shadow-sm">Testimonials</span>
-                        <h2 className="text-3xl font-bold mt-4 text-[#3E2F2D]">來自溫泉鄉的口碑推薦</h2>
+                        <h2 className="text-3xl font-bold mt-4 text-[#3E2F2D]">小心！可能成為咖啡牛乳控</h2>
                         <p className="text-[#3E2F2D] mt-2 opacity-80">礁溪五星飯店住客的真實反饋</p>
                     </div>
 
@@ -510,7 +441,7 @@
                             <div className="inline-block bg-[#F6CED1] text-[#D93B41] px-4 py-1 rounded-full text-sm font-bold tracking-wider mb-3">
                                 PURE & SIMPLE
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-bold text-[#3E2F2D] mb-4">比一比，嚇一跳</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-[#3E2F2D] mb-4">100%無化學添加，只有我們那麼堅持！</h2>
                             <p className="text-[#3E2F2D] opacity-80">不比不知道，一比才發現我們真的有夠「單純」</p>
                         </div>
 
@@ -625,21 +556,11 @@
                         </div>
                         
                         <div className="lg:w-1/2 space-y-6">
-                        <h2 className="text-sm font-bold tracking-[0.2em] text-[#D93B41] bg-[#F6CED1] inline-block px-3 py-1 rounded-lg">大人的甜點哲學</h2>
+                        <h2 className="text-sm font-bold tracking-[0.2em] text-[#D93B41] bg-[#F6CED1] inline-block px-3 py-1 rounded-lg">新品登場</h2>
                         <h3 className="text-4xl md:text-5xl font-bold text-[#3E2F2D]">
                             咖啡牛乳達克瓦茲<br/>
-                            <span className="text-2xl md:text-3xl font-medium mt-3 block text-[#D93B41] font-rounded italic">幸福的開心有兩種</span>
+                            <span className="text-2xl md:text-3xl font-medium mt-3 block text-[#D93B41] font-rounded italic">好吃到鄰居吃了一顆，隔天來訂30顆</span>
                         </h3>
-                        <div className="text-[#3E2F2D] leading-relaxed text-lg opacity-90 space-y-4">
-                            <p>
-                                一種是<span className="font-bold text-[#D93B41]">「剛剛好的開心」</span>：<br/>
-                                以無糖的「真大人」搭配達克瓦茲，剛剛好的甜，是成熟的溫柔。
-                            </p>
-                            <p>
-                                一種是<span className="font-bold text-[#D93B41]">「真的很開心」</span>：<br/>
-                                以微糖的「小大人」搭配達克瓦茲，多一點點甜，是寵愛自己的儀式。
-                            </p>
-                        </div>
                         <div className="bg-white p-6 rounded-3xl border-2 border-[#F6CED1] shadow-sm relative">
                             <div className="absolute -top-3 -left-2 text-4xl text-[#FFA39A]">❝</div>
                             <p className="italic text-[#3E2F2D] relative z-10">
@@ -652,7 +573,7 @@
                             <li className="flex items-center text-[#3E2F2D]"><span className="w-6 h-6 bg-[#FFA39A] text-white rounded-full mr-3 flex items-center justify-center text-xs">✓</span>頂級食材的優雅餘韻</li>
                         </ul>
                         <button onClick={() => scrollToSection('shop')} className="mt-4 bg-[#D93B41] text-white px-8 py-3 rounded-2xl hover:bg-[#3E2F2D] transition shadow-lg hover:shadow-xl">
-                            品嚐輕盈美味
+                            立即預購
                         </button>
                         </div>
                     </div>
@@ -693,6 +614,44 @@
                                     還是與好姊妹大聊心事的 <span className="font-bold">We Time</span>，<br/>
                                     這份美好搭配，是值得您細細品味的療癒儀式。
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* 1.5 Who is a Fan Section (Moved Here) */}
+                <section className="py-24 px-6 bg-white relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-40 h-40 bg-[#F6CED1] rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+                    <div className="absolute bottom-0 right-0 w-40 h-40 bg-[#FFA39A] rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+
+                    <div className="container mx-auto px-6 max-w-4xl relative z-10 text-center">
+                        <div className="inline-block bg-[#F6CED1] text-[#D93B41] px-6 py-2 rounded-full text-sm font-bold tracking-wider mb-6 shadow-sm">
+                            WHO LOVE US
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#3E2F2D] mb-8">
+                            誰是大人牛乳的粉絲？
+                        </h2>
+                        
+                        <div className="bg-white rounded-[3rem] p-8 md:p-12 border-2 border-[#F6CED1] shadow-lg">
+                            <div className="flex justify-center gap-4 mb-8">
+                                <div className="w-12 h-12 bg-[#F6CED1] rounded-full flex items-center justify-center text-[#D93B41]"><Heart size={20} /></div>
+                                <div className="w-12 h-12 bg-[#F6CED1] rounded-full flex items-center justify-center text-[#D93B41]"><MapPin size={20} /></div>
+                                <div className="w-12 h-12 bg-[#F6CED1] rounded-full flex items-center justify-center text-[#D93B41]"><Smile size={20} /></div>
+                            </div>
+
+                            <p className="text-xl text-[#3E2F2D] leading-relaxed font-medium mb-8">
+                                大人牛乳總是受到<span className="text-[#D93B41]">熱愛生活</span>、<span className="text-[#D93B41]">旅行</span>、<span className="text-[#D93B41]">閱讀</span>、<span className="text-[#D93B41]">品飲</span>這類美好事物的人們喜愛！
+                            </p>
+                            <div className="w-16 h-1 bg-[#FFA39A] mx-auto mb-8 rounded-full"></div>
+                            <p className="text-[#3E2F2D] text-lg leading-relaxed opacity-80">
+                                我們抗拒有毒的食材，厭惡辦公室政治，<br className="hidden md:block"/>
+                                重視人與人之間的真誠交流，享受善良帶來的一切美好。
+                            </p>
+                            
+                            <div className="flex flex-wrap justify-center gap-3 mt-8">
+                                <span className="bg-[#3E2F2D] text-white px-4 py-1 rounded-full text-sm">#拒絕有毒</span>
+                                <span className="bg-[#3E2F2D] text-white px-4 py-1 rounded-full text-sm">#真誠交流</span>
+                                <span className="bg-[#3E2F2D] text-white px-4 py-1 rounded-full text-sm">#善良美好</span>
                             </div>
                         </div>
                     </div>
